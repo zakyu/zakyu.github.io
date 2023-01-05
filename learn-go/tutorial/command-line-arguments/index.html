@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的标准库 - 浩之的编程学习笔记</title>
+    <title>命令行参数 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1672918431" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/standard-library/">
+  <body class="" data-url="/learn-go/tutorial/command-line-arguments/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -369,7 +369,7 @@
     
     <li data-nav-id="/learn-c/standard-library/" title="C 语言的标准库" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/standard-library/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -434,7 +434,7 @@
   
     
     <li data-nav-id="/learn-go/tutorial/" title="快速入门" class="dd-item
-        
+        parent
         
         
         ">
@@ -483,7 +483,7 @@
  
   
     
-      <li data-nav-id="/learn-go/tutorial/command-line-arguments/" title="命令行参数" class="dd-item ">
+      <li data-nav-id="/learn-go/tutorial/command-line-arguments/" title="命令行参数" class="dd-item active">
         <a href="/learn-go/tutorial/command-line-arguments/">
         命令行参数
         <i class="fas fa-check read-icon"></i>
@@ -712,7 +712,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的标准库
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/tutorial/'>快速入门</a> > 命令行参数
+          
+        
           
         
           
@@ -741,20 +747,93 @@
           
             <h1>
               
-              C 语言的标准库
+              命令行参数
             </h1>
           
 
         
 
 
+<p><code>os</code>包提供一些函数和变量，以与平台无关的方式和操作系统交互。</p>
+<p>命令行参数以<code>os</code>包中<code>Args</code>名字的变量供程序访问，在<code>os</code>包外面，使用<code>os.Args</code>这个名字。</p>
+<p>变量<code>os.Args</code>是一个字符串<code>slice</code>，是一个动态容量的顺序数组<code>s</code>，可以通过<code>s[i]</code>来访问单个元素，通过<code>s[m:n]</code>来访问一段连续子区间，数组长度用<code>len(s)</code>表示。</p>
+<p>在Go中，所有的索引使用半开区间，即包含第一个索引，不包含最后一个索引。例如，<code>slice s[m:n]</code>，其中<code>0≤m≤n≤len(s)</code>，包含<code>n-m</code>个元素。</p>
+<p><code>os.Args</code>的第一个元素<code>os.Args[0]</code>是命令本身的名字；其他元素是程序开始执行时的参数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// echo 输出其命令行参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">sep</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">s</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">sep</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#a6e22e">i</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sep</span> = <span style="color:#e6db74">&#34; &#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>注释以<code>//</code>开头。</p>
+<p><code>:=</code>符号用于短变量声明，这种语句声明一个或多个变量，并且根据初始化的值给予合适的类型。</p>
+<p>递增语句x++、递减语句x&ndash;</p>
+<ul>
+<li>是语句，而不像其他C族语言一样是表达式，所以y=x++、y=x&ndash;是不合法的</li>
+<li>仅支持后缀，所以&ndash;x不合法。</li>
+</ul>
+<p><code>for</code>是<code>Go</code>里面的唯一循环语句。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">initialization</span>; <span style="color:#a6e22e">condition</span>; <span style="color:#a6e22e">post</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 零个或多个语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p><code>for</code>循环的三个组成部分两边不用小括号。大括号是必需的，左大括号必须和<code>post</code>语句在同一行。</p>
+<p><code>initialization</code>语句在循环开始之前执行。如果存在，它必须是一个简单的语句，比如：</p>
+<ul>
+<li>简短的变量声明</li>
+<li>递增或赋值语句</li>
+<li>函数调用</li>
+</ul>
+<p><code>condition</code>语句是一个布尔表达式，在循环的每一次迭代开始前推演。</p>
+<p><code>post</code>语句在循环体之后被执行。</p>
+<p>三部分都是可以省略的。</p>
+<p>如果没有<code>initialization</code>语句和<code>post</code>语句，分号可以省略：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">condition</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// ... 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>如果三部分都不存在：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>循环是无限的，这种形式的循环可以通过如<code>break</code>或<code>return</code>等语句进行终止。</p>
+<p>另一种形式的<code>for</code>循环在字符串或<code>slice</code>数据上迭代。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">sep</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">arg</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>:] {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">s</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">sep</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">arg</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sep</span> = <span style="color:#e6db74">&#34; &#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">s</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>每一次迭代，<code>range</code>产生一对值：索引和这个索引处元素的值。</p>
+<p>Go不允许存在无用的临时变量，不然会出现编译错误。</p>
+<p>空标识符<code>_</code>，可以用在任何语法需要变量名但是程序逻辑不需要的地方。</p>
+<p>上面方式，每次循环，字符串<code>s</code>有了新的内容。旧的内容不再需要使用，会被例行垃圾回收。</p>
+<p>如果有大量的数据需要处理，这样的代价会比较大。一个简单高效的方式是使用<code>string</code>包中的<code>Join</code>函数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Join</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>:], <span style="color:#e6db74">&#34; &#34;</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果不关心格式，只是想看值，或者只是调试，那么用<code>Println</code>格式化结果就可以了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>:])
+</span></span></code></pre></div>
 
-	
-
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -789,6 +868,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -805,9 +886,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -815,41 +893,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
                     
                         
             
@@ -879,6 +922,9 @@
                     
                     
 
+                    
+            
+        
                     
             
         
@@ -952,7 +998,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -963,40 +1008,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1030,10 +1041,82 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1141,10 +1224,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/preprocessor/" title="C 语言的预处理器"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/tutorial/helloworld/" title="Hello, World"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-go/" title="Go语言学习" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/tutorial/find-duplicate-lines/" title="找出重复行" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1176,3 +1259,4 @@
 
   </body>
 </html>
+

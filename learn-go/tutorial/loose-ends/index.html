@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的标准库 - 浩之的编程学习笔记</title>
+    <title>更多 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1672918431" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/standard-library/">
+  <body class="" data-url="/learn-go/tutorial/loose-ends/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -369,7 +369,7 @@
     
     <li data-nav-id="/learn-c/standard-library/" title="C 语言的标准库" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/standard-library/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -434,7 +434,7 @@
   
     
     <li data-nav-id="/learn-go/tutorial/" title="快速入门" class="dd-item
-        
+        parent
         
         
         ">
@@ -609,7 +609,7 @@
  
   
     
-      <li data-nav-id="/learn-go/tutorial/loose-ends/" title="更多" class="dd-item ">
+      <li data-nav-id="/learn-go/tutorial/loose-ends/" title="更多" class="dd-item active">
         <a href="/learn-go/tutorial/loose-ends/">
         更多
         <i class="fas fa-check read-icon"></i>
@@ -712,7 +712,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的标准库
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/tutorial/'>快速入门</a> > 更多
+          
+        
           
         
           
@@ -741,20 +747,73 @@
           
             <h1>
               
-              C 语言的标准库
+              更多
             </h1>
           
 
         
 
 
+<ol>
+<li>控制流</li>
+</ol>
+<p><code>if</code>语句
+<code>for</code>语句</p>
+<p><code>switch</code>语句
+<code>case</code>语句从上到下进行推演，所以第一个匹配的<code>case</code>语句会被执行。
+如果没有<code>case</code>语句符合条件，那么可选的<code>default</code>语句被执行。
+<code>default</code>语句可以放在任意地方。
+<code>case</code>语句不想C语言那样从上到下贯穿执行。（<code>fallthrough</code>语句可以改写这个行为）</p>
+<p><code>switch</code>语句可以不要操作数，它就像一个<code>case</code>语句列表，每条<code>case</code>语句都是一个布尔表达式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Signum</span>(<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">x</span> &gt; <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">x</span> &lt; <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这种形式称为无标签（tagless）选择，它等价于<code>switch true</code>。</p>
+<p><code>break</code>和<code>continue</code>语句可以改变控制流。</p>
+<ol start="2">
+<li>
+<p>命名类型
+<code>type</code>声明给已有类型命名。</p>
+</li>
+<li>
+<p>指针
+指针的值是变量的地址。
+指针显式可见。
+使用<code>&amp;</code>操作符可以获取一个变量的地址。
+使用<code>*</code>操作符可以获取指针引用的变量的值。
+<strong>指针不支持算术运算</strong></p>
+</li>
+<li>
+<p>方法和接口
+一个关联了命名类型的函数称为方法。
+Go里面的方法可以关联到几乎所有的命名类型。</p>
+</li>
+</ol>
+<p>接口可以用相同的方式处理不同的具体类型的抽象类型，它基于这些类型所包含的方法，而不是类型描述或实现。</p>
+<ol start="5">
+<li>包
+Go自带一个可扩展并且实用的标准库。
+Go社区创建和共享了更多的库。
+可以在<a href="https://golang.org/pkg">https://golang.org/pkg</a>找到标准包的索引。
+社区贡献的包可以在<a href="https://godoc.org">https://godoc.org</a>找到。</li>
+</ol>
+<p>使用<code>go doc</code>工具可以方便地通过命令行访问这些文档</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go doc http.Get
+</span></span></code></pre></div><ol start="6">
+<li>注释
+单行注释：<code>//</code>
+多行注释：<code>/* ... */</code></li>
+</ol>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -789,6 +848,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -805,9 +866,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -815,41 +873,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
                     
                         
             
@@ -883,120 +906,8 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1110,10 +1021,159 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -1141,10 +1201,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/preprocessor/" title="C 语言的预处理器"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/tutorial/a-web-server/" title="一个 Web 服务器"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-go/" title="Go语言学习" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/tutorial/helloworld/" title="Hello, World" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1176,3 +1236,4 @@
 
   </body>
 </html>
+

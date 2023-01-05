@@ -1,5 +1,12 @@
 [
 {
+	"uri": "https://zakyu.com/learn-go/tutorial/helloworld/",
+	"title": "Hello, World",
+	"tags": [],
+	"description": "",
+	"content": "package main import \u0026#34;fmt\u0026#34; func main() { fmt.Println(\u0026#34;Hello world.\u0026#34;); } $ go run main.go or $ go build main.go $ ./main Go代码是使用包来组织的，包类似于其他语言中的库和模块。 一个包由一个或多个.go源文件组成，放在一个文件夹中，该文件夹的名字描述了包的作用。 每一个源文件的开始都用package声明，指明了这个文件属于哪个包。 后面跟着它导入的其他包的列表，然后是存储在文件中的程序声明。\n名为main的包比较特殊，它用来定义一个独立的可执行程序，而不是库。 在main包中，函数main也是特殊的，它总是程序开始执行的地方。\n必须精确地导入需要的包。在缺失导入或存在不需要的包的情况下，编译会失败。\nimport声明必须跟在package声明之后。\nimport导入声明后面，是组成程序的函数、变量、常量、类型声明。\nGo不需要在语句或声明的后面使用分号结尾，除非有多个语句或声明出现在同一行。\n事实上，跟在特定符号后面的换行符被转换为分号，在什么地方进行换行会影响对Go代码的解析。例如：\n函数的{符号必须和关键字func在同一行，不能独立成行， 在x+y这个表达式中，换行符可以在+操作符的后面，但是不能在其之前。 "
+},
+{
 	"uri": "https://zakyu.com/learn-c/prepare/compiler/",
 	"title": "编译器",
 	"tags": [],
@@ -21,11 +28,32 @@
 	"content": ""
 },
 {
+	"uri": "https://zakyu.com/learn-go/tutorial/command-line-arguments/",
+	"title": "命令行参数",
+	"tags": [],
+	"description": "",
+	"content": "os包提供一些函数和变量，以与平台无关的方式和操作系统交互。\n命令行参数以os包中Args名字的变量供程序访问，在os包外面，使用os.Args这个名字。\n变量os.Args是一个字符串slice，是一个动态容量的顺序数组s，可以通过s[i]来访问单个元素，通过s[m:n]来访问一段连续子区间，数组长度用len(s)表示。\n在Go中，所有的索引使用半开区间，即包含第一个索引，不包含最后一个索引。例如，slice s[m:n]，其中0≤m≤n≤len(s)，包含n-m个元素。\nos.Args的第一个元素os.Args[0]是命令本身的名字；其他元素是程序开始执行时的参数。\n// echo 输出其命令行参数 package main import ( \u0026#34;fmt\u0026#34; \u0026#34;os\u0026#34; ) func main() { var s, sep string for i := 1; i \u0026lt; len(os.Args); i++ { s += sep + os.Args[i] sep = \u0026#34; \u0026#34; } fmt.Println(s) } 注释以//开头。\n:=符号用于短变量声明，这种语句声明一个或多个变量，并且根据初始化的值给予合适的类型。\n递增语句x++、递减语句x\u0026ndash;\n是语句，而不像其他C族语言一样是表达式，所以y=x++、y=x\u0026ndash;是不合法的 仅支持后缀，所以\u0026ndash;x不合法。 for是Go里面的唯一循环语句。\nfor initialization; condition; post { // 零个或多个语句 } for循环的三个组成部分两边不用小括号。大括号是必需的，左大括号必须和post语句在同一行。\ninitialization语句在循环开始之前执行。如果存在，它必须是一个简单的语句，比如：\n简短的变量声明 递增或赋值语句 函数调用 condition语句是一个布尔表达式，在循环的每一次迭代开始前推演。\npost语句在循环体之后被执行。\n三部分都是可以省略的。\n如果没有initialization语句和post语句，分号可以省略：\nfor condition { // ... } 如果三部分都不存在：\nfor { // ... } 循环是无限的，这种形式的循环可以通过如break或return等语句进行终止。\n另一种形式的for循环在字符串或slice数据上迭代。\npackage main import ( \u0026#34;fmt\u0026#34; \u0026#34;os\u0026#34; ) func main() { s, sep := \u0026#34;\u0026#34;, \u0026#34;\u0026#34; for _, arg := range os.Args[1:] { s += sep + arg sep = \u0026#34; \u0026#34; } fmt.Println(s) } 每一次迭代，range产生一对值：索引和这个索引处元素的值。\nGo不允许存在无用的临时变量，不然会出现编译错误。\n空标识符_，可以用在任何语法需要变量名但是程序逻辑不需要的地方。\n上面方式，每次循环，字符串s有了新的内容。旧的内容不再需要使用，会被例行垃圾回收。\n如果有大量的数据需要处理，这样的代价会比较大。一个简单高效的方式是使用string包中的Join函数：\nfunc main() { fmt.Println(strings.Join(os.Args[1:], \u0026#34; \u0026#34;)); } 如果不关心格式，只是想看值，或者只是调试，那么用Println格式化结果就可以了：\nfmt.Println(os.Args[1:]) "
+},
+{
+	"uri": "https://zakyu.com/learn-go/",
+	"title": "Go语言学习",
+	"tags": [],
+	"description": "",
+	"content": "书籍：The Go Programming Language\n"
+},
+{
 	"uri": "https://zakyu.com/learn-c/prepare/editor/",
 	"title": "编辑器",
 	"tags": [],
 	"description": "",
 	"content": ""
+},
+{
+	"uri": "https://zakyu.com/learn-go/tutorial/find-duplicate-lines/",
+	"title": "找出重复行",
+	"tags": [],
+	"description": "",
+	"content": "// 输出标准输入中出现次数大于1的行，前面是次数 package main import ( \u0026#34;bufio\u0026#34; \u0026#34;fmt\u0026#34; \u0026#34;os\u0026#34; ) func main() { counts := make(map[string]int) input := bufio.NewScanner(os.Stdin) for input.Scan() { counts[input.Text()]++ } for line, n := range counts { if n \u0026gt;= 1 { fmt.Printf(\u0026#34;%d\\t%s\\n\u0026#34;, n, line) } } } if语句中的条件部分也不放在圆括号里，但程序体中需要用到大括号。这里还有一个可选的else部分，当条件为false时执行。\nmap存储一个键/值对集合，并且提供常量时间的操作来存储、获取或测试集合中的某个元素。\n键可以是其值能够进行相等（==）比较的任意类型。 值可以是任意类型。 键在map中不存在也是没问题的。当一个新的行第一次出现时，右边的表达式根据值类型被推演为零值。\nmap里面的键的迭代顺序不是固定的，通常是随机的，每次运行都不一致。\nbufio包可以简便高效地处理输入和输出。 类型Scanner，扫描器，它可以读取输入，以行或者单词为单位断开，这是处理以行为单位的输入内容的最简单方式。\n程序使用短变量的声明方式，新建一个bufio.Scanner类型input变量：\ninput := bufio.NewScanner(os.Stdin) 扫描器从程序的标准输入进行读取。每一次调用input.Scan()读取下一行，并且将结尾的换行符去掉；Scan()函数在读到新行的时候返回true，在没有更多内容时返回false。 通过调用input.Text()来获取读到的内容。\n// 打印输入中多次出现的行的个数和文本 // 它从 stdin 或指定的文件列表读取 package main import ( \u0026#34;bufio\u0026#34; \u0026#34;fmt\u0026#34; \u0026#34;os\u0026#34; ) func main() { counts := make(map[string]int) files := os.Args[1:] if len(files) == 0 { countLines(os.Stdin, counts) } else { for _, arg := range files { f, err := os.Open(arg) if err != nil { fmt.Fprintf(os.Stderr, \u0026#34;dup: %v\\n\u0026#34;, err) continue } countLines(f, counts) f.Close() } } for line, n := range counts { if n \u0026gt;= 1 { fmt.Printf(\u0026#34;%d\\t%s\\n\u0026#34;, n, line) } } } func countLines(f *os.File, counts map[string]int) { input := bufio.NewScanner(f) for input.Scan() { counts[input.Text()]++ } } 函数os.Open返回两个值：\n第一个是打开的文件（*os.File） 第二个返回值是一个内置的error类型值的。如果等于特殊的内置nil值，标准文件成功打开。 函数Close关闭文件，然后释放相应的资源。\n函数和其他包级别的实体能够以任意次序声明。\nmap是一个使用make创建的数据结构的引用。当一个map被传递给一个函数时，函数接收到这个引用的副本，所以被调用函数中对于map数据结构中的改变对函数调用者使用的map引用也是可见的。\npackage main import ( \u0026#34;fmt\u0026#34; \u0026#34;io/ioutil\u0026#34; \u0026#34;os\u0026#34; \u0026#34;strings\u0026#34; ) func main() { counts := make(map[string]int) for _, filename := range os.Args[1:] { data, err := ioutil.ReadFile(filename) if err != nil { fmt.Fprintf(os.Stderr, \u0026#34;dup: %v\\n\u0026#34;, err) continue } for _, line := range strings.Split(string(data), \u0026#34;\\n\u0026#34;) { counts[line]++ } } for line, n := range counts { if n \u0026gt; 1 { fmt.Printf(\u0026#34;%d\\t%s\\n\u0026#34;, n, line) } } } ReadFile函数（io/ioutil包里），它读取整个命名文件的内容。\nstrings.Slipt函数，它将一个字符串分割为一个有字串组成的slice。\nbufio.Scanner、ioutil.ReadFile、ioutil.WriteFile使用*os.File中的Read和Write方法。\n"
 },
 {
 	"uri": "https://zakyu.com/learn-c/expressions-and-statements/",
@@ -35,11 +63,25 @@
 	"content": ""
 },
 {
+	"uri": "https://zakyu.com/learn-go/tutorial/animated-gifs/",
+	"title": "GIF 动画",
+	"tags": [],
+	"description": "",
+	"content": "package main import ( \u0026#34;image\u0026#34; \u0026#34;image/color\u0026#34; \u0026#34;image/gif\u0026#34; \u0026#34;io\u0026#34; \u0026#34;log\u0026#34; \u0026#34;math\u0026#34; \u0026#34;math/rand\u0026#34; \u0026#34;net/http\u0026#34; \u0026#34;os\u0026#34; \u0026#34;time\u0026#34; ) var palette = []color.Color{color.White, color.Black} const ( whiteIndex = 0 blackIndex = 1 ) func main() { rand.Seed(time.Now().UTC().UnixNano()) if len(os.Args) \u0026gt; 1 \u0026amp;\u0026amp; os.Args[1] == \u0026#34;web\u0026#34; { handler := func(w http.ResponseWriter, r *http.Request) { lissajous(w) } http.HandleFunc(\u0026#34;/\u0026#34;, handler) log.Fatal(http.ListenAndServe(\u0026#34;localhost:8080\u0026#34;, nil)) } lissajous(os.Stdout) } func lissajous(out io.Writer) { const ( cycles = 5 res = 0.001 size = 100 nframes = 64 delay = 8 ) freq := rand.Float64() * 3.0 anim := gif.GIF{LoopCount: nframes} phase := 0.0 for i := 0; i \u0026lt; nframes; i++ { rect := image.Rect(0, 0, 2*size+1, 2*size+1) img := image.NewPaletted(rect, palette) for t := 0.0; t \u0026lt; cycles*2*math.Pi; t += res { x := math.Sin(t) y := math.Sin(t*freq + phase) img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), blackIndex) } phase += 0.1 anim.Delay = append(anim.Delay, delay) anim.Image = append(anim.Image, img) } gif.EncodeAll(out, \u0026amp;anim) } 在导入由多段路径组成的包之后，使用路径最后的一段来引用这个包。\nconst声明用来给常量命名，常量是其值在编译期间固定的量。 const声明可以出现在包级别或在一个函数内。 常量必须是数字、字符串、布尔值。\n结构体由一组称为字段的值组成，字段通常有不同的数据类型，它们一起组成单个对象，作为一个单位被对待。\n"
+},
+{
 	"uri": "https://zakyu.com/learn-c/data-type/",
 	"title": "C 语言的数据类型",
 	"tags": [],
 	"description": "",
 	"content": ""
+},
+{
+	"uri": "https://zakyu.com/learn-go/tutorial/fetching-a-url/",
+	"title": "获取一个 URL",
+	"tags": [],
+	"description": "",
+	"content": "package main import ( \u0026#34;fmt\u0026#34; \u0026#34;io/ioutil\u0026#34; \u0026#34;net/http\u0026#34; \u0026#34;os\u0026#34; ) func main() { for _, url := range os.Args { resp, err := http.Get(url) if err != nil { fmt.Fprintf(os.Stderr, \u0026#34;fetch: %v\\n\u0026#34;, err) os.Exit(1) } b, err := ioutil.ReadAll(resp.Body) resp.Body.Close() if err != nil { fmt.Fprintf(os.Stderr, \u0026#34;fetch: %v\\n\u0026#34;, err) os.Exit(1) } fmt.Printf(\u0026#34;%s\u0026#34;, b) } } http.Get函数产生一个HTTP请求。\n"
 },
 {
 	"uri": "https://zakyu.com/learn-c/operator/",
@@ -49,6 +91,13 @@
 	"content": ""
 },
 {
+	"uri": "https://zakyu.com/learn-go/tutorial/fetching-urls-concurrently/",
+	"title": "并发获取多个 URL",
+	"tags": [],
+	"description": "",
+	"content": "package main import ( \u0026#34;fmt\u0026#34; \u0026#34;io\u0026#34; \u0026#34;io/ioutil\u0026#34; \u0026#34;net/http\u0026#34; \u0026#34;os\u0026#34; \u0026#34;time\u0026#34; ) func main() { start := time.Now() ch := make(chan string) for _, url := range os.Args[1:] { go fetch(url, ch) } for range os.Args[1:] { fmt.Println(\u0026lt;-ch) } fmt.Printf(\u0026#34;%.2fs elapsed\\n\u0026#34;, time.Since(start).Seconds()) } func fetch(url string, ch chan\u0026lt;- string) { start := time.Now() resp, err := http.Get(url) if err != nil { ch \u0026lt;- fmt.Sprint(err) return } nbytes, err := io.Copy(ioutil.Discard, resp.Body) resp.Body.Close() if err != nil { ch \u0026lt;- fmt.Sprintf(\u0026#34;while reading %s: %v\u0026#34;, url, err) return } secs := time.Since(start).Seconds() ch \u0026lt;- fmt.Sprintf(\u0026#34;%.2fs %7d %s\u0026#34;, secs, nbytes, url) } goroutine是一个并发执行的函数。\n通道是一种允许某一例程向另一个例程传递指定类型值的通信机制。\nmain函数在一个goroutine中执行。 go语句创建goroutine。\n当一个goroutine试图在一个通道上进行发送或接收操作时，它会阻塞，直到另一个goroutine试图进行接收或发送操作才传递值，并开始处理两个goroutine。\n"
+},
+{
 	"uri": "https://zakyu.com/learn-c/program-flow/",
 	"title": "C 语言的程序流程",
 	"tags": [],
@@ -56,11 +105,25 @@
 	"content": ""
 },
 {
+	"uri": "https://zakyu.com/learn-go/tutorial/a-web-server/",
+	"title": "一个 Web 服务器",
+	"tags": [],
+	"description": "",
+	"content": "// 回声服务器 package main import ( \u0026#34;fmt\u0026#34; \u0026#34;log\u0026#34; \u0026#34;net/http\u0026#34; ) func main() { http.HandleFunc(\u0026#34;/\u0026#34;, handler) log.Fatal(http.ListenAndServe(\u0026#34;localhost:8080\u0026#34;, nil)) } func handler(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, \u0026#34;URL.Path = %q\\n\u0026#34;, r.URL.Path) } // 回声服务器和计数服务器 package main import ( \u0026#34;fmt\u0026#34; \u0026#34;log\u0026#34; \u0026#34;net/http\u0026#34; \u0026#34;sync\u0026#34; ) var mu sync.Mutex var count int func main() { http.HandleFunc(\u0026#34;/\u0026#34;, handler) http.HandleFunc(\u0026#34;/count\u0026#34;, counter) log.Fatal(http.ListenAndServe(\u0026#34;localhost:8080\u0026#34;, nil)) } func handler(w http.ResponseWriter, r *http.Request) { mu.Lock() count++ mu.Unlock() fmt.Fprintf(w, \u0026#34;URL.Path = %q\\n\u0026#34;, r.URL.Path) } func counter(w http.ResponseWriter, r *http.Request) { mu.Lock() fmt.Fprintf(w, \u0026#34;Count %d\\n\u0026#34;, count) mu.Unlock() } // 处理程序回显HTTP请求 package main import ( \u0026#34;fmt\u0026#34; \u0026#34;log\u0026#34; \u0026#34;net/http\u0026#34; ) func main() { http.HandleFunc(\u0026#34;/\u0026#34;, handler) log.Fatal(http.ListenAndServe(\u0026#34;localhost:8080\u0026#34;, nil)) } func handler(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, \u0026#34;%s %s %s\\n\u0026#34;, r.Method, r.URL, r.Proto) for k, v := range r.Header { fmt.Fprintf(w, \u0026#34;Header[%q] = %q\\n\u0026#34;, k, v) } fmt.Fprintf(w, \u0026#34;Host = %q\\n\u0026#34;, r.Host) fmt.Fprintf(w, \u0026#34;RemoteAddr = %q\\n\u0026#34;, r.RemoteAddr) if err := r.ParseForm(); err != nil { log.Print(err) } for k, v := range r.Form { fmt.Fprintf(w, \u0026#34;Form[%q] = %q\\n\u0026#34;, k, v) } } "
+},
+{
 	"uri": "https://zakyu.com/learn-c/function/",
 	"title": "C 语言的函数",
 	"tags": [],
 	"description": "",
 	"content": ""
+},
+{
+	"uri": "https://zakyu.com/learn-go/tutorial/loose-ends/",
+	"title": "更多",
+	"tags": [],
+	"description": "",
+	"content": " 控制流 if语句 for语句\nswitch语句 case语句从上到下进行推演，所以第一个匹配的case语句会被执行。 如果没有case语句符合条件，那么可选的default语句被执行。 default语句可以放在任意地方。 case语句不想C语言那样从上到下贯穿执行。（fallthrough语句可以改写这个行为）\nswitch语句可以不要操作数，它就像一个case语句列表，每条case语句都是一个布尔表达式：\nfunc Signum(x int) int { switch { case x \u0026gt; 0: return +1 default: return 0 case x \u0026lt; 0: return -1 } } 这种形式称为无标签（tagless）选择，它等价于switch true。\nbreak和continue语句可以改变控制流。\n命名类型 type声明给已有类型命名。\n指针 指针的值是变量的地址。 指针显式可见。 使用\u0026amp;操作符可以获取一个变量的地址。 使用*操作符可以获取指针引用的变量的值。 指针不支持算术运算\n方法和接口 一个关联了命名类型的函数称为方法。 Go里面的方法可以关联到几乎所有的命名类型。\n接口可以用相同的方式处理不同的具体类型的抽象类型，它基于这些类型所包含的方法，而不是类型描述或实现。\n包 Go自带一个可扩展并且实用的标准库。 Go社区创建和共享了更多的库。 可以在https://golang.org/pkg找到标准包的索引。 社区贡献的包可以在https://godoc.org找到。 使用go doc工具可以方便地通过命令行访问这些文档\n$ go doc http.Get 注释 单行注释：// 多行注释：/* ... */ "
 },
 {
 	"uri": "https://zakyu.com/learn-c/preprocessor/",
@@ -82,6 +145,13 @@
 	"tags": [],
 	"description": "",
 	"content": "浩之的编程笔记 "
+},
+{
+	"uri": "https://zakyu.com/learn-go/tutorial/",
+	"title": "快速入门",
+	"tags": [],
+	"description": "",
+	"content": ""
 },
 {
 	"uri": "https://zakyu.com/categories/",

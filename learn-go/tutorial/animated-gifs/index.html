@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的标准库 - 浩之的编程学习笔记</title>
+    <title>GIF 动画 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1672918431" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/standard-library/">
+  <body class="" data-url="/learn-go/tutorial/animated-gifs/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -369,7 +369,7 @@
     
     <li data-nav-id="/learn-c/standard-library/" title="C 语言的标准库" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/standard-library/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -434,7 +434,7 @@
   
     
     <li data-nav-id="/learn-go/tutorial/" title="快速入门" class="dd-item
-        
+        parent
         
         
         ">
@@ -525,7 +525,7 @@
  
   
     
-      <li data-nav-id="/learn-go/tutorial/animated-gifs/" title="GIF 动画" class="dd-item ">
+      <li data-nav-id="/learn-go/tutorial/animated-gifs/" title="GIF 动画" class="dd-item active">
         <a href="/learn-go/tutorial/animated-gifs/">
         GIF 动画
         <i class="fas fa-check read-icon"></i>
@@ -712,7 +712,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的标准库
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/tutorial/'>快速入门</a> > GIF 动画
+          
+        
           
         
           
@@ -741,20 +747,80 @@
           
             <h1>
               
-              C 语言的标准库
+              GIF 动画
             </h1>
           
 
         
 
 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;image&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;image/color&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;image/gif&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;io&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;math&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;math/rand&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">palette</span> = []<span style="color:#a6e22e">color</span>.<span style="color:#a6e22e">Color</span>{<span style="color:#a6e22e">color</span>.<span style="color:#a6e22e">White</span>, <span style="color:#a6e22e">color</span>.<span style="color:#a6e22e">Black</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">whiteIndex</span> = <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">blackIndex</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Seed</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UTC</span>().<span style="color:#a6e22e">UnixNano</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>) &gt; <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;web&#34;</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">handler</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">lissajous</span>(<span style="color:#a6e22e">w</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#a6e22e">handler</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;localhost:8080&#34;</span>, <span style="color:#66d9ef">nil</span>))
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">lissajous</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">lissajous</span>(<span style="color:#a6e22e">out</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Writer</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> (
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">cycles</span>  = <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">res</span>     = <span style="color:#ae81ff">0.001</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">size</span>    = <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">nframes</span> = <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">delay</span>   = <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">freq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Float64</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">3.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">anim</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gif</span>.<span style="color:#a6e22e">GIF</span>{<span style="color:#a6e22e">LoopCount</span>: <span style="color:#a6e22e">nframes</span>}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">phase</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">nframes</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">rect</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">Rect</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#a6e22e">size</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#a6e22e">size</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">img</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">NewPaletted</span>(<span style="color:#a6e22e">rect</span>, <span style="color:#a6e22e">palette</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>; <span style="color:#a6e22e">t</span> &lt; <span style="color:#a6e22e">cycles</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Pi</span>; <span style="color:#a6e22e">t</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">res</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sin</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sin</span>(<span style="color:#a6e22e">t</span><span style="color:#f92672">*</span><span style="color:#a6e22e">freq</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">phase</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">SetColorIndex</span>(<span style="color:#a6e22e">size</span><span style="color:#f92672">+</span>int(<span style="color:#a6e22e">x</span><span style="color:#f92672">*</span><span style="color:#a6e22e">size</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0.5</span>), <span style="color:#a6e22e">size</span><span style="color:#f92672">+</span>int(<span style="color:#a6e22e">y</span><span style="color:#f92672">*</span><span style="color:#a6e22e">size</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0.5</span>), <span style="color:#a6e22e">blackIndex</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">phase</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">anim</span>.<span style="color:#a6e22e">Delay</span> = append(<span style="color:#a6e22e">anim</span>.<span style="color:#a6e22e">Delay</span>, <span style="color:#a6e22e">delay</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">anim</span>.<span style="color:#a6e22e">Image</span> = append(<span style="color:#a6e22e">anim</span>.<span style="color:#a6e22e">Image</span>, <span style="color:#a6e22e">img</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">gif</span>.<span style="color:#a6e22e">EncodeAll</span>(<span style="color:#a6e22e">out</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">anim</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在导入由多段路径组成的包之后，使用路径最后的一段来引用这个包。</p>
+<p><code>const</code>声明用来给常量命名，常量是其值在编译期间固定的量。
+<code>const</code>声明可以出现在包级别或在一个函数内。
+常量必须是数字、字符串、布尔值。</p>
+<p>结构体由一组称为字段的值组成，字段通常有不同的数据类型，它们一起组成单个对象，作为一个单位被对待。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -789,6 +855,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -805,9 +873,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -815,41 +880,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
                     
                         
             
@@ -879,6 +909,9 @@
                     
                     
 
+                    
+            
+        
                     
             
         
@@ -952,57 +985,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                 
                 
 
@@ -1046,6 +1028,58 @@
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1066,6 +1100,42 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1141,10 +1211,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/preprocessor/" title="C 语言的预处理器"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/tutorial/find-duplicate-lines/" title="找出重复行"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-go/" title="Go语言学习" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/tutorial/fetching-a-url/" title="获取一个 URL" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1176,3 +1246,4 @@
 
   </body>
 </html>
+

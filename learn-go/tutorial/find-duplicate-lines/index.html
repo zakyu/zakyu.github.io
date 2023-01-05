@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的标准库 - 浩之的编程学习笔记</title>
+    <title>找出重复行 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1672918431" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/standard-library/">
+  <body class="" data-url="/learn-go/tutorial/find-duplicate-lines/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -369,7 +369,7 @@
     
     <li data-nav-id="/learn-c/standard-library/" title="C 语言的标准库" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/standard-library/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -434,7 +434,7 @@
   
     
     <li data-nav-id="/learn-go/tutorial/" title="快速入门" class="dd-item
-        
+        parent
         
         
         ">
@@ -504,7 +504,7 @@
  
   
     
-      <li data-nav-id="/learn-go/tutorial/find-duplicate-lines/" title="找出重复行" class="dd-item ">
+      <li data-nav-id="/learn-go/tutorial/find-duplicate-lines/" title="找出重复行" class="dd-item active">
         <a href="/learn-go/tutorial/find-duplicate-lines/">
         找出重复行
         <i class="fas fa-check read-icon"></i>
@@ -712,7 +712,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的标准库
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/tutorial/'>快速入门</a> > 找出重复行
+          
+        
           
         
           
@@ -741,20 +747,130 @@
           
             <h1>
               
-              C 语言的标准库
+              找出重复行
             </h1>
           
 
         
 
 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// 输出标准输入中出现次数大于1的行，前面是次数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;bufio&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">counts</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">input</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewScanner</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdin</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">Scan</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">counts</span>[<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">Text</span>()]<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">line</span>, <span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">counts</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\t%s\n&#34;</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">line</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>if</code>语句中的条件部分也不放在圆括号里，但程序体中需要用到大括号。这里还有一个可选的<code>else</code>部分，当条件为<code>false</code>时执行。</p>
+<p><code>map</code>存储一个键/值对集合，并且提供常量时间的操作来存储、获取或测试集合中的某个元素。</p>
+<ul>
+<li>键可以是其值能够进行相等（==）比较的任意类型。</li>
+<li>值可以是任意类型。</li>
+</ul>
+<p>键在<code>map</code>中不存在也是没问题的。当一个新的行第一次出现时，右边的表达式根据值类型被推演为零值。</p>
+<p><code>map</code>里面的键的迭代顺序不是固定的，通常是随机的，每次运行都不一致。</p>
+<p><code>bufio</code>包可以简便高效地处理输入和输出。
+类型<code>Scanner</code>，扫描器，它可以读取输入，以行或者单词为单位断开，这是处理以行为单位的输入内容的最简单方式。</p>
+<p>程序使用短变量的声明方式，新建一个<code>bufio.Scanner</code>类型<code>input</code>变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">input</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewScanner</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdin</span>)
+</span></span></code></pre></div><p>扫描器从程序的标准输入进行读取。每一次调用<code>input.Scan()</code>读取下一行，并且将结尾的换行符去掉；<code>Scan()</code>函数在读到新行的时候返回<code>true</code>，在没有更多内容时返回<code>false</code>。
+通过调用<code>input.Text()</code>来获取读到的内容。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// 打印输入中多次出现的行的个数和文本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 它从 stdin 或指定的文件列表读取
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;bufio&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">counts</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">files</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">countLines</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdin</span>, <span style="color:#a6e22e">counts</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">arg</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">files</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#a6e22e">arg</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;dup: %v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">countLines</span>(<span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">counts</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">line</span>, <span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">counts</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\t%s\n&#34;</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">line</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">countLines</span>(<span style="color:#a6e22e">f</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">File</span>, <span style="color:#a6e22e">counts</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">input</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewScanner</span>(<span style="color:#a6e22e">f</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">Scan</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">counts</span>[<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">Text</span>()]<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>函数<code>os.Open</code>返回两个值：</p>
+<ul>
+<li>第一个是打开的文件（*os.File）</li>
+<li>第二个返回值是一个内置的<code>error</code>类型值的。如果等于特殊的内置<code>nil</code>值，标准文件成功打开。</li>
+</ul>
+<p>函数<code>Close</code>关闭文件，然后释放相应的资源。</p>
+<p>函数和其他包级别的实体能够以任意次序声明。</p>
+<p><code>map</code>是一个使用<code>make</code>创建的数据结构的引用。当一个<code>map</code>被传递给一个函数时，函数接收到这个引用的副本，所以被调用函数中对于<code>map</code>数据结构中的改变对函数调用者使用的<code>map</code>引用也是可见的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;io/ioutil&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">counts</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">filename</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>:] {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadFile</span>(<span style="color:#a6e22e">filename</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprintf</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;dup: %v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">line</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(string(<span style="color:#a6e22e">data</span>), <span style="color:#e6db74">&#34;\n&#34;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">counts</span>[<span style="color:#a6e22e">line</span>]<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">line</span>, <span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">counts</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> &gt; <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\t%s\n&#34;</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">line</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>ReadFile</code>函数（io/ioutil包里），它读取整个命名文件的内容。</p>
+<p><code>strings.Slipt</code>函数，它将一个字符串分割为一个有字串组成的<code>slice</code>。</p>
+<p><code>bufio.Scanner</code>、<code>ioutil.ReadFile</code>、<code>ioutil.WriteFile</code>使用<code>*os.File</code>中的<code>Read</code>和<code>Write</code>方法。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -789,6 +905,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -805,9 +923,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -815,41 +930,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
                     
                         
             
@@ -879,6 +959,9 @@
                     
                     
 
+                    
+            
+        
                     
             
         
@@ -952,57 +1035,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                 
                 
 
@@ -1046,10 +1078,98 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1141,10 +1261,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/preprocessor/" title="C 语言的预处理器"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/tutorial/command-line-arguments/" title="命令行参数"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-go/" title="Go语言学习" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/tutorial/animated-gifs/" title="GIF 动画" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1176,3 +1296,4 @@
 
   </body>
 </html>
+

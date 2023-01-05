@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zakyu.com/learn-go/tutorial/helloworld/</loc>
+    <lastmod>2023-01-04T19:40:37+08:00</lastmod>
+  </url><url>
     <loc>https://zakyu.com/learn-c/prepare/compiler/</loc>
     <lastmod>2022-12-31T23:51:40+08:00</lastmod>
   </url><url>
@@ -11,23 +14,47 @@
     <loc>https://zakyu.com/learn-c/</loc>
     <lastmod>2022-12-31T22:49:34+08:00</lastmod>
   </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/command-line-arguments/</loc>
+    <lastmod>2023-01-04T20:09:49+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/</loc>
+    <lastmod>2023-01-04T19:36:32+08:00</lastmod>
+  </url><url>
     <loc>https://zakyu.com/learn-c/prepare/editor/</loc>
     <lastmod>2022-12-31T23:51:55+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/find-duplicate-lines/</loc>
+    <lastmod>2023-01-04T21:45:37+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/learn-c/expressions-and-statements/</loc>
     <lastmod>2023-01-01T00:00:27+08:00</lastmod>
   </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/animated-gifs/</loc>
+    <lastmod>2023-01-04T23:08:49+08:00</lastmod>
+  </url><url>
     <loc>https://zakyu.com/learn-c/data-type/</loc>
     <lastmod>2023-01-01T00:00:59+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/fetching-a-url/</loc>
+    <lastmod>2023-01-04T23:56:54+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/learn-c/operator/</loc>
     <lastmod>2023-01-01T00:01:17+08:00</lastmod>
   </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/fetching-urls-concurrently/</loc>
+    <lastmod>2023-01-05T18:24:04+08:00</lastmod>
+  </url><url>
     <loc>https://zakyu.com/learn-c/program-flow/</loc>
     <lastmod>2023-01-01T00:02:12+08:00</lastmod>
   </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/a-web-server/</loc>
+    <lastmod>2023-01-05T18:37:42+08:00</lastmod>
+  </url><url>
     <loc>https://zakyu.com/learn-c/function/</loc>
     <lastmod>2023-01-01T00:02:29+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/loose-ends/</loc>
+    <lastmod>2023-01-05T19:01:36+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/learn-c/preprocessor/</loc>
     <lastmod>2023-01-01T00:02:58+08:00</lastmod>
@@ -36,7 +63,10 @@
     <lastmod>2023-01-01T00:03:19+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/</loc>
-    <lastmod>2023-01-01T00:03:19+08:00</lastmod>
+    <lastmod>2023-01-05T19:01:36+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/</loc>
+    <lastmod>2023-01-04T19:39:53+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/categories/</loc>
   </url><url>

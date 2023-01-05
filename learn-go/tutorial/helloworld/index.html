@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的标准库 - 浩之的编程学习笔记</title>
+    <title>Hello, World - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1672918431" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/standard-library/">
+  <body class="" data-url="/learn-go/tutorial/helloworld/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -369,7 +369,7 @@
     
     <li data-nav-id="/learn-c/standard-library/" title="C 语言的标准库" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/standard-library/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -434,7 +434,7 @@
   
     
     <li data-nav-id="/learn-go/tutorial/" title="快速入门" class="dd-item
-        
+        parent
         
         
         ">
@@ -462,7 +462,7 @@
  
   
     
-      <li data-nav-id="/learn-go/tutorial/helloworld/" title="Hello, World" class="dd-item ">
+      <li data-nav-id="/learn-go/tutorial/helloworld/" title="Hello, World" class="dd-item active">
         <a href="/learn-go/tutorial/helloworld/">
         Hello, World
         <i class="fas fa-check read-icon"></i>
@@ -712,7 +712,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的标准库
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/tutorial/'>快速入门</a> > Hello, World
+          
+        
           
         
           
@@ -741,20 +747,44 @@
           
             <h1>
               
-              C 语言的标准库
+              Hello, World
             </h1>
           
 
         
 
 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Hello world.&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run main.go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>or
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ go build main.go
+</span></span><span style="display:flex;"><span>$ ./main
+</span></span></code></pre></div><p>Go代码是使用包来组织的，包类似于其他语言中的库和模块。
+一个包由一个或多个<code>.go</code>源文件组成，放在一个文件夹中，该文件夹的名字描述了包的作用。
+每一个源文件的开始都用<code>package</code>声明，指明了这个文件属于哪个包。
+后面跟着它导入的其他包的列表，然后是存储在文件中的程序声明。</p>
+<p>名为<code>main</code>的包比较特殊，它用来定义一个独立的可执行程序，而不是库。
+在<code>main</code>包中，函数<code>main</code>也是特殊的，它总是程序开始执行的地方。</p>
+<p>必须精确地导入需要的包。在缺失导入或存在不需要的包的情况下，编译会失败。</p>
+<p><code>import</code>声明必须跟在<code>package</code>声明之后。</p>
+<p><code>import</code>导入声明后面，是组成程序的函数、变量、常量、类型声明。</p>
+<p>Go不需要在语句或声明的后面使用分号结尾，除非有多个语句或声明出现在同一行。</p>
+<p>事实上，跟在特定符号后面的换行符被转换为分号，在什么地方进行换行会影响对Go代码的解析。例如：</p>
+<ul>
+<li>函数的<code>{</code>符号必须和关键字<code>func</code>在同一行，不能独立成行，</li>
+<li>在<code>x+y</code>这个表达式中，换行符可以在<code>+</code>操作符的后面，但是不能在其之前。</li>
+</ul>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -789,6 +819,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -805,9 +837,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -815,41 +844,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
                     
                         
             
@@ -879,6 +873,9 @@
                     
                     
 
+                    
+            
+        
                     
             
         
@@ -952,7 +949,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -963,40 +959,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1018,6 +980,75 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1141,10 +1172,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/preprocessor/" title="C 语言的预处理器"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/tutorial/" title="快速入门"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-go/" title="Go语言学习" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/tutorial/command-line-arguments/" title="命令行参数" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1176,3 +1207,4 @@
 
   </body>
 </html>
+
