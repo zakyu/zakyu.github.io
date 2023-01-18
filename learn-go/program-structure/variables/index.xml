@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>变量 on 浩之的编程学习笔记</title>
+    <link>https://zakyu.com/learn-go/program-structure/variables/</link>
+    <description>Recent content in 变量 on 浩之的编程学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Jan 2023 17:29:27 +0800</lastBuildDate><atom:link href="https://zakyu.com/learn-go/program-structure/variables/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>短变量声明</title>
+      <link>https://zakyu.com/learn-go/program-structure/variables/short-variable-declarations/</link>
+      <pubDate>Fri, 06 Jan 2023 17:30:59 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/variables/short-variable-declarations/</guid>
+      <description>在函数中，一种称作短变量声明的可选形式可以用来声明和初始化局部变量。 它使用name := expression的形式，name的类型由expression的类型决定。
+多变量的短变量声明：
+i, j := 0, 1 短变量声明不需要声明所有在左边的变量。如果一些变量在同一个词法中声明，那么对于那些变量，短声明的行为等同于赋值。
+短变量声明至少声明一个新变量，否则，代码编译无法通过。</description>
+    </item>
+    
+    <item>
+      <title>Pointers</title>
+      <link>https://zakyu.com/learn-go/program-structure/variables/pointers/</link>
+      <pubDate>Fri, 06 Jan 2023 17:31:42 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/variables/pointers/</guid>
+      <description>变量是存储值的地方。
+指针的值是一个变量的地址。 不是所有的值都有地址，但是所有的变量都有。 使用指针，可以在无须知道变量名字的情况下，间接读取或更新变量的值。
+如果一个变量声明为：var x int 表达式&amp;amp;x（x的地址）获取一个指向整型变量的指针，指针的类型是整型指针（*int）。 如果值叫作p，我们说p指向x，或者p包含x的地址。 p指向的变量写成*p，表达式*p获取变量的值。 *p可以出现在赋值操作符左边，用于更新变量的值。
+x := 1 p := &amp;amp;x // p 是整型指针，指向x fmt.Println(*p) // 1 *p = 2 // 等于 x = 2 fmt.Println(x) // 2 每一个聚合类型变量的组成（结构体的成员或数组中的元素）都是变量，所以也有一个地址。
+变量有时候使用一个地址化的值。 代表变量的表达式，是唯一可以应用的取地址操作符&amp;amp;的表达式。
+指针类型的零值是nil。
+指针是可比较的，两个指针当且仅当指向同一个变量或者两者都是nil的情况下才相等。
+函数返回局部变量的地址是安全的。例如：
+var p = f() func f() *int { v := 1 return &amp;amp;v } 通过调用f产生的局部变量v即使在调用返回后依然存在，指针p依然引用它。 每次调用f返回的值不一定相同。
+每次使用变量的地址或复制一个指针，我们就创建了新的别名或方式来标记同一变量。 指针别名允许我们不用变量的名字来访问变量，这一点非常有用，但是它是双刃剑：为了找到所有访问变量的语句，需要知道所有的别名。 不仅指针产生别名，当复制其他引用类型的值时，也会产生别名。
+package main import ( &amp;#34;flag&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;strings&amp;#34; ) var n = flag.</description>
+    </item>
+    
+    <item>
+      <title>new函数</title>
+      <link>https://zakyu.com/learn-go/program-structure/variables/the-new-function/</link>
+      <pubDate>Fri, 06 Jan 2023 17:32:26 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/variables/the-new-function/</guid>
+      <description>另一种创建变量的方式：使用内置的new函数创建变量。
+表达式new(T)创建一个未命名的T类型变量，初始化为T类型的零值，并返回其地址（地址类型为*T）。
+p := new(int) // *int类型的p，指向未命名的int变量 fmt.Println(*p) // 0 *p = 2 // 把未命名的int设置为2 fmt.Println(*p) // 2 使用new创建的变量和取其地址的普通局部变量没有什么不同，只是不需要引入一个虚拟的名字，通过new(T)就可以直接在表达式中使用。 new只是语法上的便利，不是一个基础概念。
+每一次调用new返回一个具有唯一地址的不同变量。 这个规则有一个例外：两个变量的类型不携带任何信息且是零值，例如struct{}或[0]int，当前的实现里面，它们有相同的地址。
+new是一个预声明的函数，不是一个关键字，所以它可以重定义为另外的其他类型。</description>
+    </item>
+    
+    <item>
+      <title>Lifetime of Variables</title>
+      <link>https://zakyu.com/learn-go/program-structure/variables/lifetime-of-variables/</link>
+      <pubDate>Fri, 06 Jan 2023 17:32:58 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/variables/lifetime-of-variables/</guid>
+      <description>生命周期指程序执行过程中变量存在的时间段。
+包级别变量的生命周期是整个程序执行时间。
+局部变量有一个动态的生命周期：每次执行声明语句时创建一个新的实体，变量一直生存到它变得不可访问，这时它占用的存储空间被回收。
+函数的参数和返回值也是局部变量，它们在其闭包函数被调用的时候创建。
+for i := 0; i &amp;lt; 10; i++ { x := 1 fmt.Println(x) } 变量i在每次for循环的开始创建，变量x在每次迭代中创建。
+垃圾回收器如何知道一个变量是否应该被回收？ 基本思路是每一个包级别的变量，以及每一个当前执行函数的局部变量，可以作为追溯变量的路径的源头，通过指针和其他方式的引用可以找到变量。如果变量的路径不存在，那么变量变得不可访问，因此它不会影响任何其他的计算过程。 因为变量的生命周期是通过它是否可达来确定的，所以局部变量可在包含它的循环的一次迭代之外继续存活。即使包含它的循环已经返回，它的存在还可能延续。
+编译器可以选择使用堆或栈上的空间分配，这个选择不是基于使用var或new关键字来声明变量。
+var global *int func f() { var x int x = 1 global = &amp;amp;x } func g() { y := new(int) *y = 1 } 这里，x一定使用堆空间，因为它在f函数返回以后还可以从global变量访问，尽管它被声明为一个局部变量。这种情况我们说x从f中逃逸。 相反，当g函数返回时，变量*y变得不可访问，可回收。因为*y没有从g函数中逃逸，所以编译器可以安全地在栈上分配*y，即便使用new函数创建它。
+任何情况下，逃逸的概念使得不需要额外费心来写正确的代码，但要记住它在性能优化的时候是有好处的，因为每一次变量逃逸都需要一次额外的内存分配过程。
+在长生命周期对象中保持短生命周期对象不必要的指针，特别是在全局变量中，会阻止垃圾回收器回收短生命周期的对象空间。</description>
+    </item>
+    
+  </channel>
+</rss>

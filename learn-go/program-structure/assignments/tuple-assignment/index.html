@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>多重赋值 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/assignments/tuple-assignment/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -835,7 +835,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/assignments/" title="赋值" class="dd-item
-        
+        parent
         
         
         ">
@@ -863,7 +863,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/assignments/tuple-assignment/" title="多重赋值" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/assignments/tuple-assignment/" title="多重赋值" class="dd-item active">
         <a href="/learn-go/program-structure/assignments/tuple-assignment/">
         多重赋值
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,19 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > <a href='/learn-go/program-structure/assignments/'>赋值</a> > 多重赋值
+          
+        
+          
+        
           
         
           
@@ -1126,20 +1138,26 @@
           
             <h1>
               
-              C 语言的函数
+              多重赋值
             </h1>
           
 
         
 
 
+<p>在实际更新变量前，右边所有的表达式被推演。当变量同时出现在赋值符两侧时这种形式特别有用，例如，当交换两个变量时可以：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> = <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span>
+</span></span></code></pre></div><p>或者计算两个整数的最大公约数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">gcd</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span> = <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">x</span><span style="color:#f92672">%</span><span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以将不需要的值赋值给空标识符。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1192,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1209,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1249,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,6 +1373,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1533,6 +1388,172 @@
             
             
                 
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1646,6 +1667,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1658,6 +1680,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1674,6 +1697,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1794,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/assignments/" title="赋值"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/assignments/assignability/" title="可赋值性" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1829,4 @@
 
   </body>
 </html>
+

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>短变量声明 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/variables/short-variable-declarations/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -713,7 +713,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/variables/" title="变量" class="dd-item
-        
+        parent
         
         
         ">
@@ -741,7 +741,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/variables/short-variable-declarations/" title="短变量声明" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/variables/short-variable-declarations/" title="短变量声明" class="dd-item active">
         <a href="/learn-go/program-structure/variables/short-variable-declarations/">
         短变量声明
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,19 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > <a href='/learn-go/program-structure/variables/'>变量</a> > 短变量声明
+          
+        
+          
+        
           
         
           
@@ -1126,20 +1138,22 @@
           
             <h1>
               
-              C 语言的函数
+              短变量声明
             </h1>
           
 
         
 
 
+<p><strong>在函数中</strong>，一种称作<em>短变量声明</em>的可选形式可以用来声明和初始化局部变量。
+它使用<code>name := expression</code>的形式，<code>name</code>的类型由<code>expression</code>的类型决定。</p>
+<p>多变量的短变量声明：</p>
+<pre tabindex="0"><code>i, j := 0, 1
+</code></pre><p>短变量声明不需要声明所有在左边的变量。如果一些变量在同一个词法中声明，那么对于那些变量，短声明的行为等同于赋值。</p>
+<p>短变量声明至少声明一个新变量，否则，代码编译无法通过。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1188,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1205,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1245,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,6 +1369,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1528,6 +1379,38 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1574,6 +1457,9 @@
                     
 
                     
+            
+        
+                    
                         
             
             
@@ -1594,6 +1480,142 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1790,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/variables/" title="变量"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/variables/pointers/" title="Pointers" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1825,4 @@
 
   </body>
 </html>
+

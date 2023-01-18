@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>包和文件 on 浩之的编程学习笔记</title>
+    <link>https://zakyu.com/learn-go/program-structure/packages-and-files/</link>
+    <description>Recent content in 包和文件 on 浩之的编程学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Jan 2023 18:15:09 +0800</lastBuildDate><atom:link href="https://zakyu.com/learn-go/program-structure/packages-and-files/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>包初始化</title>
+      <link>https://zakyu.com/learn-go/program-structure/packages-and-files/package-initialization/</link>
+      <pubDate>Fri, 06 Jan 2023 18:59:27 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/packages-and-files/package-initialization/</guid>
+      <description>包的初始化从初始化包级别的变量开始，这些变量按照声明顺序初始化，在依赖已解析完毕的情况下，根据依赖的顺序进行。
+var a = b + c // 3. 最后把a初始化为3 var b = f() // 2. 通过调用f，接着把b初始化为2 var c = 1 // 1. 首先初始化为1 func f() int { return c+1 } 如果包由多个.go文件组成，初始化按照编译器收到文件的顺序进行：go工具会在调用编译器前将.go文件进行排序。
+对于包级别的每一个变量，生命周期从其值被初始化开始，但是对于其他一些变量，比如数据表，初始化表达式不是简单地设置它的初始值。这种情况下，init函数的机制会比较简单。 任何文件可以包含任意数量的声明如下的函数：
+func init() { ... } 这个init函数不能被调用和被引用，另一方面，它也是普通的函数。 在每一个文件里，当程序启动时，init函数按照它们声明的顺序自动执行。
+包的初始化按照在程序中导入的顺序来进行，依赖顺序优先，每次初始化一个包。 初始化过程时自下而上的，main包最后初始化。</description>
+    </item>
+    
+  </channel>
+</rss>

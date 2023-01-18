@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>Pointers - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/variables/pointers/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -713,7 +713,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/variables/" title="变量" class="dd-item
-        
+        parent
         
         
         ">
@@ -762,7 +762,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/variables/pointers/" title="Pointers" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/variables/pointers/" title="Pointers" class="dd-item active">
         <a href="/learn-go/program-structure/variables/pointers/">
         Pointers
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,19 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > <a href='/learn-go/program-structure/variables/'>变量</a> > Pointers
+          
+        
+          
+        
           
         
           
@@ -1126,20 +1138,70 @@
           
             <h1>
               
-              C 语言的函数
+              Pointers
             </h1>
           
 
         
 
 
+<p>变量是存储值的地方。</p>
+<p>指针的值是一个变量的地址。
+不是所有的值都有地址，但是所有的变量都有。
+使用指针，可以在无须知道变量名字的情况下，间接读取或更新变量的值。</p>
+<p>如果一个变量声明为：<code>var x int</code>
+表达式<code>&amp;x</code>（x的地址）获取一个指向整型变量的指针，指针的类型是整型指针（*int）。
+如果值叫作<code>p</code>，我们说<code>p</code>指向<code>x</code>，或者<code>p</code>包含<code>x</code>的地址。
+<code>p</code>指向的变量写成<code>*p</code>，表达式<code>*p</code>获取变量的值。
+<code>*p</code>可以出现在赋值操作符左边，用于更新变量的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">x</span> <span style="color:#75715e">// p 是整型指针，指向x
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>) <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">*</span><span style="color:#a6e22e">p</span> = <span style="color:#ae81ff">2</span>  <span style="color:#75715e">// 等于 x = 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">x</span>) <span style="color:#75715e">// 2
+</span></span></span></code></pre></div><p>每一个聚合类型变量的组成（结构体的成员或数组中的元素）都是变量，所以也有一个地址。</p>
+<p>变量有时候使用一个<em>地址化</em>的值。
+代表变量的表达式，是唯一可以应用的<em>取地址</em>操作符<code>&amp;</code>的表达式。</p>
+<p>指针类型的零值是<code>nil</code>。</p>
+<p>指针是可比较的，两个指针当且仅当指向同一个变量或者两者都是<code>nil</code>的情况下才相等。</p>
+<p>函数返回局部变量的地址是安全的。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> =  <span style="color:#a6e22e">f</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">f</span>() <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">v</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>通过调用<code>f</code>产生的局部变量<code>v</code>即使在调用返回后依然存在，指针<code>p</code>依然引用它。
+每次调用<code>f</code>返回的值不一定相同。</p>
+<p>每次使用变量的地址或复制一个指针，我们就创建了新的<em>别名</em>或方式来标记同一变量。
+指针别名允许我们不用变量的名字来访问变量，这一点非常有用，但是它是双刃剑：为了找到所有访问变量的语句，需要知道所有的别名。
+不仅指针产生别名，当复制其他引用类型的值时，也会产生别名。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;flag&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> = <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Bool</span>(<span style="color:#e6db74">&#34;n&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;omit trailing newline&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sep</span> = <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">String</span>(<span style="color:#e6db74">&#34;s&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>, <span style="color:#e6db74">&#34;separator&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Join</span>(<span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Args</span>(), <span style="color:#f92672">*</span><span style="color:#a6e22e">sep</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> !<span style="color:#f92672">*</span><span style="color:#a6e22e">n</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>flag</code>包使用程序的命令行参数来设置整个程序内某些变量的值。</p>
+<p><code>flag.Bool</code>函数创建一个新的布尔标识变量。它有三个参数：标识的名字、变量的默认值、以及当用户提供非法标识、非法参数或<code>-h</code>、<code>-help</code>参数时输出的消息。
+<code>flag.String</code>函数使用名字、默认值、消息来创建一个字符串变量</p>
+<p><code>flag.Parse</code>函数来更新标识变量的默认值。</p>
+<p>非标识参数也可以从<code>flag.Args()</code>返回的字符串slice来访问。
+如果<code>flag.Parse</code>遇到错误，它输出一条帮助消息，然后调用<code>os.Exit(2)</code>来结束程序。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1236,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1253,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1293,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,6 +1417,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1528,6 +1427,54 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1574,6 +1521,25 @@
                     
 
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1606,10 +1572,117 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1841,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/variables/short-variable-declarations/" title="短变量声明"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/variables/the-new-function/" title="new函数" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1876,4 @@
 
   </body>
 </html>
+

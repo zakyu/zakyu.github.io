@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>new函数 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/variables/the-new-function/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -713,7 +713,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/variables/" title="变量" class="dd-item
-        
+        parent
         
         
         ">
@@ -783,7 +783,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/variables/the-new-function/" title="new函数" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/variables/the-new-function/" title="new函数" class="dd-item active">
         <a href="/learn-go/program-structure/variables/the-new-function/">
         new函数
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,19 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > <a href='/learn-go/program-structure/variables/'>变量</a> > new函数
+          
+        
+          
+        
           
         
           
@@ -1126,20 +1138,27 @@
           
             <h1>
               
-              C 语言的函数
+              new函数
             </h1>
           
 
         
 
 
+<p>另一种创建变量的方式：使用内置的<code>new</code>函数创建变量。</p>
+<p>表达式<code>new(T)</code>创建一个<em>未命名</em>的<code>T</code>类型变量，初始化为<code>T</code>类型的零值，并返回其地址（地址类型为<code>*T</code>）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> new(<span style="color:#66d9ef">int</span>) <span style="color:#75715e">// *int类型的p，指向未命名的int变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>) <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">*</span><span style="color:#a6e22e">p</span> = <span style="color:#ae81ff">2</span> <span style="color:#75715e">// 把未命名的int设置为2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>) <span style="color:#75715e">// 2
+</span></span></span></code></pre></div><p>使用<code>new</code>创建的变量和取其地址的普通局部变量没有什么不同，只是不需要引入一个虚拟的名字，通过<code>new(T)</code>就可以直接在表达式中使用。
+<code>new</code>只是语法上的便利，不是一个基础概念。</p>
+<p>每一次调用<code>new</code>返回一个具有唯一地址的不同变量。
+这个规则有一个例外：两个变量的类型不携带任何信息且是零值，例如<code>struct{}</code>或<code>[0]int</code>，当前的实现里面，它们有相同的地址。</p>
+<p><code>new</code>是一个预声明的函数，不是一个关键字，所以它可以重定义为另外的其他类型。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1193,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1210,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1250,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,6 +1374,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1534,37 +1390,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
                     
                 
                 
@@ -1626,6 +1453,209 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1798,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/variables/pointers/" title="Pointers"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/variables/lifetime-of-variables/" title="Lifetime of Variables" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1833,4 @@
 
   </body>
 </html>
+

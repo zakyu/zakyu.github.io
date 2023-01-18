@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>赋值 on 浩之的编程学习笔记</title>
+    <link>https://zakyu.com/learn-go/program-structure/assignments/</link>
+    <description>Recent content in 赋值 on 浩之的编程学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Jan 2023 17:35:36 +0800</lastBuildDate><atom:link href="https://zakyu.com/learn-go/program-structure/assignments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>多重赋值</title>
+      <link>https://zakyu.com/learn-go/program-structure/assignments/tuple-assignment/</link>
+      <pubDate>Fri, 06 Jan 2023 17:36:38 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/assignments/tuple-assignment/</guid>
+      <description>在实际更新变量前，右边所有的表达式被推演。当变量同时出现在赋值符两侧时这种形式特别有用，例如，当交换两个变量时可以：
+x, y = y, x 或者计算两个整数的最大公约数：
+func gcd(x, y int) int { for y != 0 { x, y = y, x%y } return x } 可以将不需要的值赋值给空标识符。</description>
+    </item>
+    
+    <item>
+      <title>可赋值性</title>
+      <link>https://zakyu.com/learn-go/program-structure/assignments/assignability/</link>
+      <pubDate>Fri, 06 Jan 2023 17:37:12 +0800</pubDate>
+      
+      <guid>https://zakyu.com/learn-go/program-structure/assignments/assignability/</guid>
+      <description>赋值语句是显式形式的赋值，但是程序中很多地方的赋值是隐式的：
+一个函数调用隐式地将参数的值赋给对应参数的变量 一个return语句隐式地将return操作数赋值给结果变量。 复合类型的字面量表达式，隐式地给每个元素赋值。map和通道的元素尽管不是普通变量，但它们也遵循相似的隐式赋值。 赋值只有在值对于变量类型是可赋值时才合法。
+可赋值性根据类型不同有着不同的规则。
+类型必须精准匹配 nil可以被赋值给任何接口变量或引用变量。 常量有更灵活的可赋值性规则来规避显式的转换。 两个值使用!=和==进行比较与可赋值性相关：任何比较中，第一个操作数相对于第二个操作数的类型必须是可赋值的，或者可以反过来赋值。</description>
+    </item>
+    
+  </channel>
+</rss>

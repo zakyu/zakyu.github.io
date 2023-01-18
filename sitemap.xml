@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://zakyu.com/learn-go/program-structure/assignments/tuple-assignment/</loc>
+    <lastmod>2023-01-06T17:36:38+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/variables/short-variable-declarations/</loc>
+    <lastmod>2023-01-06T17:30:59+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/names/</loc>
+    <lastmod>2023-01-05T21:16:06+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/tutorial/</loc>
+    <lastmod>2023-01-04T19:39:53+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/packages-and-files/package-initialization/</loc>
+    <lastmod>2023-01-06T18:59:27+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/assignments/assignability/</loc>
+    <lastmod>2023-01-06T17:37:12+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/variables/pointers/</loc>
+    <lastmod>2023-01-06T17:31:42+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/declarations/</loc>
+    <lastmod>2023-01-05T21:35:54+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/</loc>
+    <lastmod>2023-01-05T21:14:12+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/variables/the-new-function/</loc>
+    <lastmod>2023-01-06T17:32:26+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/variables/</loc>
+    <lastmod>2023-01-06T17:29:27+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/assignments/</loc>
+    <lastmod>2023-01-06T17:35:36+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/variables/lifetime-of-variables/</loc>
+    <lastmod>2023-01-06T17:32:58+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/type-declarations/</loc>
+    <lastmod>2023-01-06T17:43:20+08:00</lastmod>
+  </url><url>
     <loc>https://zakyu.com/learn-go/tutorial/helloworld/</loc>
     <lastmod>2023-01-04T19:40:37+08:00</lastmod>
   </url><url>
@@ -13,6 +55,12 @@
   </url><url>
     <loc>https://zakyu.com/learn-c/</loc>
     <lastmod>2022-12-31T22:49:34+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/packages-and-files/</loc>
+    <lastmod>2023-01-06T18:15:09+08:00</lastmod>
+  </url><url>
+    <loc>https://zakyu.com/learn-go/program-structure/scope/</loc>
+    <lastmod>2023-01-06T23:36:08+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/learn-go/tutorial/command-line-arguments/</loc>
     <lastmod>2023-01-04T20:09:49+08:00</lastmod>
@@ -63,10 +111,7 @@
     <lastmod>2023-01-01T00:03:19+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/</loc>
-    <lastmod>2023-01-05T19:01:36+08:00</lastmod>
-  </url><url>
-    <loc>https://zakyu.com/learn-go/tutorial/</loc>
-    <lastmod>2023-01-04T19:39:53+08:00</lastmod>
+    <lastmod>2023-01-06T23:36:08+08:00</lastmod>
   </url><url>
     <loc>https://zakyu.com/categories/</loc>
   </url><url>

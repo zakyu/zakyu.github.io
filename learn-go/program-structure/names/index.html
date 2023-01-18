@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>名称 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/names/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -670,7 +670,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/names/" title="名称" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/names/" title="名称" class="dd-item active">
         <a href="/learn-go/program-structure/names/">
         名称
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > 名称
+          
+        
           
         
           
@@ -1126,20 +1132,83 @@
           
             <h1>
               
-              C 语言的函数
+              名称
             </h1>
           
 
         
 
 
+<p>Go中函数、变量、常量、类型、语句标签和包的名称遵循一个简单的规则：名称的开头是一个字母（Unicode中的字符即可）或下划线，后面可以跟任意数量的字符、数字和下划线，并区分大小写。</p>
+<p>Go有25个<strong>关键字</strong>，只能用在语法允许的地方，不能作为名称：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break</td>
+<td>default</td>
+<td>func</td>
+<td>interface</td>
+<td>select</td>
+</tr>
+<tr>
+<td>case</td>
+<td>defer</td>
+<td>go</td>
+<td>map</td>
+<td>struct</td>
+</tr>
+<tr>
+<td>chan</td>
+<td>else</td>
+<td>goto</td>
+<td>package</td>
+<td>switch</td>
+</tr>
+<tr>
+<td>const</td>
+<td>fallthrough</td>
+<td>if</td>
+<td>range</td>
+<td>type</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>for</td>
+<td>import</td>
+<td>return</td>
+<td>var</td>
+</tr>
+</tbody>
+</table>
+<p>另外有三十几个内置的预声明的常量、类型和函数：
+常量：
+<code>true</code>、<code>false</code>、<code>iota</code>、<code>nil</code>
+类型：
+<code>int</code>、<code>int8</code>、<code>int16</code>、<code>int32</code>、<code>int64</code>、
+<code>uint</code>、<code>uint8</code>、<code>uint16</code>、<code>uint32</code>、<code>uint64</code>、<code>uintptr</code>、
+<code>float32</code>、<code>float64</code>、<code>complex128</code>、<code>complex64</code>、
+<code>bool</code>、<code>byte</code>、<code>rune</code>、<code>string</code>、<code>error</code>
+函数：
+<code>make</code>、<code>len</code>、<code>cap</code>、<code>new</code>、<code>append</code>、<code>copy</code>、<code>close</code>、<code>delete</code>、
+<code>complex</code>、<code>real</code>、<code>imag</code>、
+<code>panic</code>、<code>recover</code>
+这些名称不是预留的，可以在声明中使用它们。</p>
+<p>实体的第一个字母的大小写决定其可见性是否跨包。</p>
+<p>包名本身总是由小写字母组成。</p>
+<p>通常，名称的作用域越大，就使用越长且有意义的名称。</p>
+<p>风格上，当遇到由单词组合的名称时，Go程序员使用“驼峰式”的风格。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1243,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1260,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1300,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,12 +1424,29 @@
             
                 
                     
+                    
                 
                 
 
                     
                     
                         
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
                     
                     
 
@@ -1549,6 +1471,157 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1841,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/" title="程序结构"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/declarations/" title="声明" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1876,4 @@
 
   </body>
 </html>
+

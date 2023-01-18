@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>可赋值性 - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/assignments/assignability/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -835,7 +835,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/assignments/" title="赋值" class="dd-item
-        
+        parent
         
         
         ">
@@ -884,7 +884,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/assignments/assignability/" title="可赋值性" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/assignments/assignability/" title="可赋值性" class="dd-item active">
         <a href="/learn-go/program-structure/assignments/assignability/">
         可赋值性
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,19 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > <a href='/learn-go/program-structure/assignments/'>赋值</a> > 可赋值性
+          
+        
+          
+        
           
         
           
@@ -1126,20 +1138,30 @@
           
             <h1>
               
-              C 语言的函数
+              可赋值性
             </h1>
           
 
         
 
 
+<p>赋值语句是显式形式的赋值，但是程序中很多地方的赋值是隐式的：</p>
+<ul>
+<li>一个函数调用隐式地将参数的值赋给对应参数的变量</li>
+<li>一个<code>return</code>语句隐式地将<code>return</code>操作数赋值给结果变量。</li>
+<li>复合类型的字面量表达式，隐式地给每个元素赋值。<code>map</code>和通道的元素尽管不是普通变量，但它们也遵循相似的隐式赋值。</li>
+</ul>
+<p>赋值只有在值对于变量类型是可赋值时才合法。</p>
+<p>可赋值性根据类型不同有着不同的规则。</p>
+<ul>
+<li>类型必须精准匹配</li>
+<li><code>nil</code>可以被赋值给任何接口变量或引用变量。</li>
+<li>常量有更灵活的可赋值性规则来规避显式的转换。</li>
+</ul>
+<p>两个值使用<code>!=</code>和<code>==</code>进行比较与可赋值性相关：任何比较中，第一个操作数相对于第二个操作数的类型必须是可赋值的，或者可以反过来赋值。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1196,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1213,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1253,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,6 +1377,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1533,6 +1392,172 @@
             
             
                 
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1646,6 +1671,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1658,6 +1684,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1675,6 +1704,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1693,6 +1723,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1801,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/assignments/tuple-assignment/" title="多重赋值"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/type-declarations/" title="Type Declarations" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1836,4 @@
 
   </body>
 </html>
+

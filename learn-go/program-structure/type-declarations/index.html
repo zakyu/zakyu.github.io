@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>C 语言的函数 - 浩之的编程学习笔记</title>
+    <title>Type Declarations - 浩之的编程学习笔记</title>
 
     
     <link href="/css/nucleus.css?1674043830" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/learn-c/function/">
+  <body class="" data-url="/learn-go/program-structure/type-declarations/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -89,7 +89,7 @@
   
     
     <li data-nav-id="/learn-c/" title="学 个 C 吧" class="dd-item
-        parent
+        
         
         
         ">
@@ -313,7 +313,7 @@
     
     <li data-nav-id="/learn-c/function/" title="C 语言的函数" class="dd-item
         
-        active
+        
         
         ">
       <a href="/learn-c/function/">
@@ -403,7 +403,7 @@
   
     
     <li data-nav-id="/learn-go/" title="Go语言学习" class="dd-item
-        
+        parent
         
         
         ">
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/learn-go/program-structure/" title="程序结构" class="dd-item
-        
+        parent
         
         
         ">
@@ -914,7 +914,7 @@
  
   
     
-      <li data-nav-id="/learn-go/program-structure/type-declarations/" title="Type Declarations" class="dd-item ">
+      <li data-nav-id="/learn-go/program-structure/type-declarations/" title="Type Declarations" class="dd-item active">
         <a href="/learn-go/program-structure/type-declarations/">
         Type Declarations
         <i class="fas fa-check read-icon"></i>
@@ -1097,7 +1097,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/learn-c/'>学 个 C 吧</a> > C 语言的函数
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/learn-go/'>Go语言学习</a> > <a href='/learn-go/program-structure/'>程序结构</a> > Type Declarations
+          
+        
           
         
           
@@ -1126,20 +1132,54 @@
           
             <h1>
               
-              C 语言的函数
+              Type Declarations
             </h1>
           
 
         
 
 
+<p><code>type</code>声明定义一个新的命名类型，它和某个已有类型使用同样的<em>底层类型</em>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">underlying</span><span style="color:#f92672">-</span><span style="color:#66d9ef">type</span>
+</span></span></code></pre></div><p>类型通常出现在包级别，这里命名的类型在整个包中可见，如果名字是导出的（开头使用大写字母），其他包也可以访问它。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">tempconv</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Celsius</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Fahrenheit</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">AbsoluteZeroC</span> <span style="color:#a6e22e">Celsius</span> = <span style="color:#f92672">-</span><span style="color:#ae81ff">273.15</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">FreezingC</span>     <span style="color:#a6e22e">Celsius</span> = <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">BoilingC</span>      <span style="color:#a6e22e">Celsius</span> = <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">CToF</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">Celsius</span>) <span style="color:#a6e22e">Fahrenheit</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Fahrenheit</span>(<span style="color:#a6e22e">c</span><span style="color:#f92672">*</span><span style="color:#ae81ff">9</span><span style="color:#f92672">/</span><span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">FToC</span>(<span style="color:#a6e22e">f</span> <span style="color:#a6e22e">Fahrenheit</span>) <span style="color:#a6e22e">Celsius</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Celsius</span>((<span style="color:#a6e22e">f</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个包定义了两个类型：<code>Celsius</code>和<code>Fahrenheit</code>。
+即使使用相同的底层类型<code>float64</code>，它们也不是相同类型，所以它们不能使用算术表达式进行比较和合并。
+从<code>float64</code>转换为<code>Celsius</code>或<code>Fahrenheit</code>需要显式类型转换。
+<code>Celsius(t)</code>和<code>Fahrenheit(t)</code>是类型转换，而不是函数调用。它们不会改变值和表达方式，但改变了显式意义。</p>
+<p>对于每个类型<code>T</code>，都有一个对应的类型转换操作<code>T(x)</code>将值<code>x</code>转换为类型<code>T</code>。
+如果两个类型具有相同的底层类型或二者都是指向相同底层类型变量的未命名指针类型，则二者是可以相互转换的。
+类型转换不改变类型值的表达方式，仅改变类型。
+如果<code>x</code>对于类型<code>T</code>是可赋值的，类型转换也是允许的，但是通常是不必要的。</p>
+<p>数字类型间的转换，字符串和一些<code>slice</code>类型间的转换是允许的。
+这些转换会改变值的表达方式。
+任何情况下，运行时的转换不会失败。</p>
+<p>命名类型的底层类型决定了它的结构和表达方式，以及它支持的内部操作集合，这些内部操作与直接使用底层类型的情况相同。</p>
+<p>通过<code>==</code>和<code>&lt;</code>之类的比较操作符，命名类型的值可以与其相同类型的值或者底层类型相同的未命名类型的值相比较。但是不同命名类型的值不能直接比较。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">Celsius</span>) <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%g°C&#34;</span>, <span style="color:#a6e22e">c</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>Celsius</code>参数<code>c</code>出现在函数名字前面，名字叫<code>String</code>的方法关联到<code>Celsius</code>类型。</p>
 
-	
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -1174,6 +1214,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1189,9 +1231,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1232,169 +1271,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -1519,6 +1395,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1533,6 +1410,172 @@
             
             
                 
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1694,6 +1737,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1709,6 +1753,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1768,10 +1815,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/learn-c/program-flow/" title="C 语言的程序流程"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/learn-go/program-structure/assignments/assignability/" title="可赋值性"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/learn-c/preprocessor/" title="C 语言的预处理器" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/learn-go/program-structure/packages-and-files/" title="包和文件" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1803,3 +1850,4 @@
 
   </body>
 </html>
+
